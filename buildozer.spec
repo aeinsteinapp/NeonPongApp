@@ -40,8 +40,14 @@ android.minapi = 21
 # (str) Android NDK version to use
 android.ndk = 25b
 
+# (str) Android SDK version to use
+android.sdk = 33
+
 # (bool) If True, then skip trying to update the Android sdk
 android.skip_update = False
+
+# (bool) If True, then automatically accept SDK license
+android.accept_sdk_license = True
 
 # (bool) enables Android auto backup feature (Android API >=23)
 android.allow_backup = True
