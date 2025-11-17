@@ -1,6 +1,6 @@
 [app]
 
-# (str) Title of your application - REMOVED APOSTROPHE
+# (str) Title of your application - NO APOSTROPHE
 title = DeadmanXXXII Neon Classic Pong
 
 # (str) Package name
@@ -28,7 +28,7 @@ orientation = landscape
 # (bool) Indicate if the application should be fullscreen or not
 fullscreen = 1
 
-# (list) Permissions - REDUCED TO MINIMAL
+# (list) Permissions
 android.permissions = INTERNET
 
 # (int) Target Android API, should be as high as possible.
@@ -54,15 +54,6 @@ android.archs = arm64-v8a,armeabi-v7a
 
 # (str) python-for-android branch to use
 p4a.branch = master
-
-# (str) The entry point of your application
-android.entrypoint = org.kivy.android.PythonActivity
-
-# (bool) Enable AndroidX support
-android.enable_androidx = True
-
-# (int) Gradle version
-android.gradle_dependencies = 
 
 [buildozer]
 
