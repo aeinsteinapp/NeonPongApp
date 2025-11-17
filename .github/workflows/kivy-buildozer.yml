@@ -14,12 +14,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Clean previous builds
+        run: |
+          rm -rf .buildozer
+          rm -rf bin
+
       - name: Build with Buildozer Docker
         run: |
           docker run --rm \
-            -v "$PWD":/home/user/hostcwd \
-            kivy/buildozer:latest \
-            android debug
+           -v "$PWD":/home/user/hostcwd \
+           kivy/buildozer:2.1.0 \
+           android debug 
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
