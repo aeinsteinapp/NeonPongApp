@@ -1,10 +1,10 @@
 [app]
 
-# (str) Title of your application
-title = DeadmanXXXII's Classic Pong
+# (str) Title of your application - REMOVED APOSTROPHE
+title = DeadmanXXXII Neon Classic Pong
 
 # (str) Package name
-package.name = classicpong
+package.name = neonclassicpong
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = com.deadmanxxxii
@@ -28,20 +28,17 @@ orientation = landscape
 # (bool) Indicate if the application should be fullscreen or not
 fullscreen = 1
 
-# (list) Permissions
-android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
+# (list) Permissions - REDUCED TO MINIMAL
+android.permissions = INTERNET
 
 # (int) Target Android API, should be as high as possible.
-android.api = 31
+android.api = 29
 
 # (int) Minimum API your APK will support.
 android.minapi = 21
 
 # (str) Android NDK version to use
-android.ndk = 25b
-
-# (str) Android SDK version to use
-android.sdk = 31
+android.ndk = 23b
 
 # (bool) If True, then skip trying to update the Android sdk
 android.skip_update = False
@@ -53,10 +50,19 @@ android.accept_sdk_license = True
 android.allow_backup = True
 
 # (str) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
-android.archs = arm64-v8a
+android.archs = arm64-v8a,armeabi-v7a
 
 # (str) python-for-android branch to use
 p4a.branch = master
+
+# (str) The entry point of your application
+android.entrypoint = org.kivy.android.PythonActivity
+
+# (bool) Enable AndroidX support
+android.enable_androidx = True
+
+# (int) Gradle version
+android.gradle_dependencies = 
 
 [buildozer]
 
