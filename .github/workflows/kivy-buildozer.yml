@@ -7,14 +7,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Install
         run : |
-          sudo apt install libtinfo6
+          sudo apt install libtinfo5
           sudo apt update
           sudo apt upgrade -y
       - name: Install system dependencies
