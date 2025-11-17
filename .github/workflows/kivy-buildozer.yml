@@ -12,14 +12,37 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+      uses: actions/checkout@v4
 
       - name: Build APK
         uses: digreatbrian/buildozer-action@v2
         with:
           python-version: '3.11'
-          buildozer-cmd: buildozer -v android debug
           work-dir: .
+          buildozer-cmd: buildozer -v android debug
+
+          # 👇 ADD THIS
+          pre-build-command: |
+            apt-get update
+            apt-get install -y \
+              openjdk-17-jdk \
+              git \
+              ffmpeg \
+              libsdl2-dev \
+              libsdl2-image-dev \
+              libsdl2-mixer-dev \
+              libsdl2-ttf-dev \
+              libportmidi-dev \
+              libswscale-dev \
+              libavformat-dev \
+              libavcodec-dev \
+              zlib1g-dev \
+              gstreamer1.0-tools \
+              libgstreamer1.0-dev \
+              gstreamer1.0-plugins-base \
+              gstreamer1.0-plugins-good
+
+            pip install --upgrade pip
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
