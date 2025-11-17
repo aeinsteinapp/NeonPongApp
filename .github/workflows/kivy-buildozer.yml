@@ -14,11 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Clean previous builds
-        run: |
-          rm -rf .buildozer
-          rm -rf bin
-
       - name: Build with Buildozer
         uses: ArtemSBulgakov/buildozer-action@v1
         id: buildozer
@@ -28,6 +23,8 @@ jobs:
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
+        if: success()
         with:
-          name: ClassicPong-APK
+          name: NeonClassicPong-APK
           path: ${{ steps.buildozer.outputs.filename }}
+          if-no-files-found: error
