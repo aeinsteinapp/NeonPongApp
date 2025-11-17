@@ -286,8 +286,8 @@ class MenuScreen(Screen):
         settings_btn = Button(text="Settings", size_hint=(1, 0.13))
         quit_btn = Button(text="Quit", size_hint=(1, 0.13))
         
-        start_btn.bind(on_press=lambda x: self.manager.current='game')
-        settings_btn.bind(on_press=lambda x: self.manager.current='settings')
+        start_btn.bind(on_press=lambda x: setattr(self.manager, 'current', 'game'))
+        settings_btn.bind(on_press=lambda x: setattr(self.manager, 'current', 'settings'))
         quit_btn.bind(on_press=lambda x: App.get_running_app().stop())
         
         layout.add_widget(title)
@@ -398,4 +398,3 @@ class NeonPongApp(App):
 
 if __name__ == "__main__":
     NeonPongApp().run()
-
