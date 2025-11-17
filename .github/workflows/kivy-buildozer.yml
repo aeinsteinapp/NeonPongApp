@@ -19,6 +19,12 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: ☕ Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: ⚙️ Install Dependencies
         run: |
           sudo apt-get update
