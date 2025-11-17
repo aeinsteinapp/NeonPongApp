@@ -1,0 +1,32 @@
+# Buildozer files
+.buildozer/
+bin/
+*.pyc
+__pycache__/
+
+# Build artifacts
+*.apk
+*.aab
+
+# Settings and save files
+pong_settings.json
+pong_highscore.json
+hit.wav
+over.wav
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Old Capacitor/BeeWare files (optional)
+www/
+android/
+node_modules/
+package-lock.json
+dist/
