@@ -14,7 +14,7 @@ jobs:
 
       - name: Install
         run : |
-          sudo apt install libtinfo5
+          sudo apt install libtinfo6
           sudo apt update
           sudo apt upgrade -y
       - name: Install system dependencies
