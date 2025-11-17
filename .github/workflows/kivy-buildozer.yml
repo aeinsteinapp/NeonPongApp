@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: 🤖 Build Android APK
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04  # Use Ubuntu 20.04 instead of latest
 
     steps:
       - name: 📦 Checkout Repository
@@ -17,7 +17,7 @@ jobs:
       - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.9'  # Use Python 3.9 for better compatibility
 
       - name: ☕ Set up JDK
         uses: actions/setup-java@v4
@@ -43,9 +43,16 @@ jobs:
             zlib1g-dev \
             libgstreamer1.0 \
             gstreamer1.0-plugins-base \
-            gstreamer1.0-plugins-good
+            gstreamer1.0-plugins-good \
+            libffi-dev \
+            libssl-dev \
+            automake \
+            autoconf \
+            libtool \
+            pkg-config
           
           pip install --upgrade pip
+          pip install --upgrade setuptools wheel
           pip install buildozer cython==0.29.33
 
       - name: 🔧 Verify Files
@@ -60,7 +67,8 @@ jobs:
       - name: 🏗️ Build APK with Buildozer
         run: |
           # Accept Android SDK licenses automatically
-          yes | buildozer android debug
+          yes | buildozer android debug || true
+          buildozer android debug
         
       - name: 📤 Upload APK Artifact
         uses: actions/upload-artifact@v4
