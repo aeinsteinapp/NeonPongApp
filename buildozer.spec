@@ -32,7 +32,7 @@ fullscreen = 1
 android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
 
 # (int) Target Android API, should be as high as possible.
-android.api = 33
+android.api = 31
 
 # (int) Minimum API your APK will support.
 android.minapi = 21
@@ -41,7 +41,7 @@ android.minapi = 21
 android.ndk = 25b
 
 # (str) Android SDK version to use
-android.sdk = 33
+android.sdk = 31
 
 # (bool) If True, then skip trying to update the Android sdk
 android.skip_update = False
@@ -53,7 +53,10 @@ android.accept_sdk_license = True
 android.allow_backup = True
 
 # (str) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
-android.archs = arm64-v8a,armeabi-v7a
+android.archs = arm64-v8a
+
+# (str) python-for-android branch to use
+p4a.branch = master
 
 [buildozer]
 
