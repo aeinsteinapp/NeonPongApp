@@ -1,0 +1,63 @@
+name: Build Kivy Android APK with Buildozer
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: 🤖 Build Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📦 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: ⚙️ Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            git \
+            ffmpeg \
+            libsdl2-dev \
+            libsdl2-image-dev \
+            libsdl2-mixer-dev \
+            libsdl2-ttf-dev \
+            libportmidi-dev \
+            libswscale-dev \
+            libavformat-dev \
+            libavcodec-dev \
+            zlib1g-dev \
+            libgstreamer1.0 \
+            gstreamer1.0-plugins-base \
+            gstreamer1.0-plugins-good
+          
+          pip install --upgrade pip
+          pip install buildozer cython==0.29.33
+
+      - name: 🔧 Verify Files
+        run: |
+          ls -la
+          echo "Checking for required files..."
+          test -f main.py && echo "✓ main.py found" || echo "✗ main.py missing"
+          test -f pong.py && echo "✓ pong.py found" || echo "✗ pong.py missing"
+          test -f buildozer.spec && echo "✓ buildozer.spec found" || echo "✗ buildozer.spec missing"
+          test -f icon.png && echo "✓ icon.png found" || echo "✗ icon.png missing"
+
+      - name: 🏗️ Build APK with Buildozer
+        run: |
+          buildozer android debug
+        
+      - name: 📤 Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DeadmanPong-Kivy-Android
+          path: bin/*.apk
+          if-no-files-found: error
